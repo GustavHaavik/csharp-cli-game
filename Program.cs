@@ -41,6 +41,9 @@ class Program
             RenderSystem = renderSystem
         };
 
+        LogSystem.Instance.Log("Game started!");
+
+
         var inputThread = new Thread(() => InputLoop(game));
         var renderThread = new Thread(() => GameLoop(game));
 
@@ -99,9 +102,8 @@ class Program
             // Spawn new enemies
             game.EnemySpawnerSystem?.Update(game.Player);
 
-
-
-            LoggingSystem.Update();
+            // LoggingSystem.Update();
+            LogSystem.Instance.UpdateLogsDisplay();
 
             // Sleep to control frame rate
             stopwatch.Stop();
@@ -142,8 +144,8 @@ class Program
         var playerHealth = game.Player.GetComponent<Health>()!;
         if (playerHealth.Value <= 0)
         {
-            Console.SetCursorPosition(0, GridHeight + 3);
-            Console.WriteLine("Player is dead. Game over.");
+            LogSystem.Instance.Log("Game started!");
+
             return true;
         }
 

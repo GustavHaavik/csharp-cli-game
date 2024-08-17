@@ -69,6 +69,7 @@ public class EnemySpawnerSystem
         enemies.Add(enemy);
 
         // Console.WriteLine($"Enemy spawned at position (${enemyPosition})");
-        LoggingSystem.Instance.LogMessage($"Enemy spawned at position (${enemyPosition})");
+        // LoggingSystem.Instance.LogMessage($"Enemy spawned at position (${enemyPosition})");
+        LogSystem.Instance.Log($"Enemy spawned at position (${enemyPosition})");
     }
 }
