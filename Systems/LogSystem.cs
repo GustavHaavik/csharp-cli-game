@@ -20,7 +20,7 @@ public class LogSystem
             _logs.Dequeue();
         }
         _logs.Enqueue(message);
-        UpdateLogsDisplay();
+        // UpdateLogsDisplay();
     }
 
     public void UpdateLogsDisplay()
@@ -36,11 +36,11 @@ public class LogSystem
             index++;
         }
 
-        // Clear any extra lines from previous logs
-        for (int i = index; i < MaxLogCount; i++)
-        {
-            Console.SetCursorPosition(0, logStartY + i);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
-        }
+        // // Clear any extra lines from previous logs
+        // for (int i = index; i < MaxLogCount; i++)
+        // {
+        //     Console.SetCursorPosition(0, logStartY + i);
+        //     Console.WriteLine(new string(' ', Console.WindowWidth));
+        // }
     }
 }

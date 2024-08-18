@@ -34,20 +34,23 @@ public class InputSystem(Entity player)
         switch (direction)
         {
             case Direction.Up:
-                position.Y = Math.Max(position.Y - 1, 0);
+                position.Y--;
                 break;
             case Direction.Down:
-                position.Y = Math.Min(position.Y + 1, Program.GridHeight - 1);
+                position.Y++;
                 break;
             case Direction.Left:
-                position.X = Math.Max(position.X - 1, 0);
+                position.X--;
                 break;
             case Direction.Right:
-                position.X = Math.Min(position.X + 1, Program.GridWidth - 1);
+                position.X++;
                 break;
             default:
                 break;
         }
+
+        LogSystem.Instance.Log($"Moved to {position.X}, {position.Y}");
+
     }
 
     public enum Direction

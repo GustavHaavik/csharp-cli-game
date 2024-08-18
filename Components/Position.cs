@@ -20,7 +20,5 @@ namespace csharp_cli_game.Components
         public bool IsEqual(Position other) => X == other.X && Y == other.Y;
 
         public override string ToString() => $"X: {X}, Y: {Y}";
-
-
     }
 }

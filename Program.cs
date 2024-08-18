@@ -11,8 +11,6 @@ class Program
     const int FrameRate = 30; // Target frames per second
     const int FramesToAverage = 10; // Number of frames to average for FPS calculation
 
-    static readonly LoggingSystem LoggingSystem = LoggingSystem.Instance;
-
     static EntityFactory EntityFactory = new();
     public static InputSystem InputSystem = null!;
 
@@ -42,7 +40,6 @@ class Program
         };
 
         LogSystem.Instance.Log("Game started!");
-
 
         var inputThread = new Thread(() => InputLoop(game));
         var renderThread = new Thread(() => GameLoop(game));
@@ -83,12 +80,13 @@ class Program
         var stopwatch = new Stopwatch();
         var frameTimes = new Queue<double>();
 
+        // Render the game world
+        game.World.RenderWorld();
+
         while (true)
         {
             stopwatch.Restart();
 
-            // Render the game world
-            game.World.RenderWorld();
 
             game.RenderSystem?.Render(game.Player, game.World);
 
@@ -102,7 +100,6 @@ class Program
             // Spawn new enemies
             game.EnemySpawnerSystem?.Update(game.Player);
 
-            // LoggingSystem.Update();
             LogSystem.Instance.UpdateLogsDisplay();
 
             // Sleep to control frame rate

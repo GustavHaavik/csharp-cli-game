@@ -6,6 +6,7 @@ namespace csharp_cli_game.Systems;
 
 public class RenderSystem
 {
+
     public void Render(Entity entity, World world)
     {
         var position = entity.GetComponent<Position>();

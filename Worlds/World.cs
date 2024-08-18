@@ -1,4 +1,5 @@
 using csharp_cli_game.Components;
+using csharp_cli_game.Systems;
 
 namespace csharp_cli_game.Worlds;
 
@@ -66,7 +67,7 @@ public class World
             {
                 var tile = Tiles[y, x];
                 Console.BackgroundColor = tile.Color;
-                Console.Write("  ");
+                Console.Write(" ");
             }
             Console.WriteLine();
         }
@@ -75,12 +76,14 @@ public class World
 
     public Tile? GetTileAt(int x, int y)
     {
-        if (!IsInBounds(x, y))
+        try
+        {
+            return Tiles[y, x];
+        }
+        catch (IndexOutOfRangeException)
         {
             return null;
         }
-
-        return Tiles[y, x / 2];
     }
 
     public bool IsInBounds(int x, int y)

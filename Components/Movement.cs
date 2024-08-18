@@ -1,3 +1,5 @@
+using csharp_cli_game.Systems;
+
 namespace csharp_cli_game.Components;
 
 public class Movement : Component
